@@ -14,11 +14,10 @@
 
 .white{
     position: relative;
-
-    width: 120%;
+    width: 120% !important;
     left:-10px;
-    top: -10px;
+    top: -15px;
     background-color: rgb(255, 255, 255);
-    height: 250px;
+    height: 30vh;
 
 }
