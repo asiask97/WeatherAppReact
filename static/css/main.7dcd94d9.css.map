@@ -1,1 +1,0 @@
-{"version":3,"file":"static/css/main.7dcd94d9.css","mappings":"AAAA,KAEI,iDAA0F,CAC9F,6BAAiC,CAF7B,iBAGJ","sources":["index.css"],"sourcesContent":["body {\r\n    text-align: center;\r\n    background: linear-gradient(90deg, hsla(186, 33%, 94%, 1) 0%, hsla(216, 41%, 79%, 1) 100%);\r\nfont-family: 'Outfit', sans-serif;\r\n}"],"names":[],"sourceRoot":""}
