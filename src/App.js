@@ -22,8 +22,8 @@ function App() {
       }
       //fetch weather data 
       const resp = await fetch(`https://api.weatherapi.com/v1/current.json?key=${key}&q=${ip}&aqi=yes`)
-      
-      //check for correct satus
+      resp.header("Access-Control-Allow-Origin", "*")
+      resp.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")      //check for correct satus
       if(!resp.ok){
         throw new Error(resp.statusText)
       }
