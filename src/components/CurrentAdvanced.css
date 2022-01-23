@@ -1,0 +1,23 @@
+.currentAdvanced p{
+    display: inline;
+    padding: 0 7px 0 7px;
+}
+
+.currentAdvanced p:nth-child(2){
+    border-left: solid black 1px;
+    border-right: solid black 1px;
+    padding: 0 6px 0 6px
+}
+
+.currentAdvanced p:nth-child(1){
+    padding-left: 0;
+}
+.currentAdvanced p:nth-child(3){
+    padding-right: 0;
+}
+
+@media only screen and (max-width: 500px){
+    .currentAdvanced p{
+       font-size: small;
+    }
+}

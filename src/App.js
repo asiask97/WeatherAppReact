@@ -1,16 +1,21 @@
 import './App.css';
+import CurrentBasics from './components/CurrentBasics'
 import {useState , useEffect , useCallback} from 'react'
+import CurrentAdvanced from './components/CurrentAdvanced';
 
 function App() {
   const key = process.env.REACT_APP_WEATHER_API_KEY
   const [ip, setIP] = useState('');
-  const [currentTep, setCurrentTemp] = useState('')
+  const [weatherData, setweatherData] = useState('')
   
   const fetchIP = useCallback(async () => {
     console.log('ip fetch')
-    const resp = await fetch('https://geolocation-db.com/json/')
+    const resp = await fetch('https://jsonip.com',{
+      mode: 'cors'
+    })
+    
     const json = await resp.json()
-    setIP(json.IPv4)
+    setIP(json.ip)
   }, []) 
 
   const fetchWeather = useCallback(async () => {
@@ -21,15 +26,18 @@ function App() {
         throw new Error("No ip was found to display weather")
       }
       //fetch weather data 
-      const resp = await fetch(`https://api.weatherapi.com/v1/current.json?key=${key}&q=${ip}&aqi=yes`)
-      resp.header("Access-Control-Allow-Origin", "*")
-      resp.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")      //check for correct satus
+      const resp = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${ip}&days=5&aqi=yes&alerts=no`,{
+        headers:{
+          'Access-Control-Allow-Origin':'*'
+        }
+      })
+      //check for correct satus
       if(!resp.ok){
         throw new Error(resp.statusText)
       }
       else{
         const json = await resp.json()
-        setCurrentTemp(json.current.temp_c)
+        setweatherData(json)
       }
     }
     catch(e){
@@ -45,10 +53,22 @@ function App() {
   
   return (
     <div className="App">
-        <h2>Your IP Address is</h2>
-        <h4>{ip}</h4>
-        <h2>Your Temperture is </h2>
-        <h4>{currentTep && currentTep}*C</h4>
+        {weatherData && < CurrentBasics 
+          location={weatherData.location.region} 
+          temp={weatherData.current.temp_c}
+          condition = {weatherData.current.condition.text}
+        />}
+        {weatherData && < CurrentAdvanced 
+          humidity={weatherData.current.humidity}
+          percip = {weatherData.current.precip_mm}
+          wind = {weatherData.current.wind_kph}
+        />}
+        <div className='waveSvg'>
+          <svg viewBox="0 0 500 150" preserveAspectRatio="none" style={{height: "100%", width: "100%"}}>
+            <path d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z" style={{stroke: "none", fill: "rgb(255, 255, 255)"}}></path>
+          </svg>
+        </div>
+        <div className='white'></div>
     </div>
   );
 }
