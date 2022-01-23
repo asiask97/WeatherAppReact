@@ -21,7 +21,7 @@ function App() {
         throw new Error("No ip was found to display weather")
       }
       //fetch weather data 
-      const resp = await fetch(`http://api.weatherapi.com/v1/current.json?key=${key}&q=${ip}&aqi=yes`)
+      const resp = await fetch(`https://api.weatherapi.com/v1/current.json?key=${key}&q=${ip}&aqi=yes`)
       
       //check for correct satus
       if(!resp.ok){
