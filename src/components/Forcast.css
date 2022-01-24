@@ -8,16 +8,24 @@
     left: -17px;
     width: 106%;
     overflow: hidden;
-    height:20vh;
-
+}
+.forcast .forcastDay p:nth-child(1){
+    margin-bottom: 10px;
+    font-weight: 600;
 }
 .forcast .forcastDay p:nth-child(3), p:nth-child(4){
     display: inline;
+
 }
 .forcast .forcastDay p:nth-child(3){
     border-right: 1px solid rgb(109, 109, 109);
-    padding-right: 5px;
+    padding-right: 5px;    
+    margin-top: 100px;
 }
 .forcast .forcastDay p:nth-child(4){
     padding-left: 5px;
+}
+
+.forcast .forcastDay svg{
+    margin-bottom: 10px;
 }

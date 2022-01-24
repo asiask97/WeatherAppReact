@@ -11,6 +11,10 @@
 }
 
 .currentBasics h4{
-    margin-top: 15px;
+    margin-top: 0px;
     font-weight: 200;
+}
+.currentBasics svg{
+    display: inline;
+    fill: rgb(66, 66, 66);
 }

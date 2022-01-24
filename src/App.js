@@ -15,6 +15,7 @@ function App() {
           location={weatherData.location.region} 
           temp={weatherData.current.temp_c}
           condition = {weatherData.current.condition.text}
+          conditionCode = {weatherData.current.condition.code}
         />}
         {weatherData && < CurrentAdvanced 
           humidity={weatherData.current.humidity}
